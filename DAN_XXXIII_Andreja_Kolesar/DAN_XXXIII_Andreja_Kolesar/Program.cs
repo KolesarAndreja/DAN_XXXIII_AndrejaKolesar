@@ -50,9 +50,28 @@ namespace DAN_XXXIII_Andreja_Kolesar
             }
         }
 
+        /// <summary>
+        /// Method is getting 1000 odd numbers in range 0 to 10000 and prints them into new file with given fileName
+        /// </summary>
+        /// <param name="fileName">Name of the file</param>
         public static void LogRandomOdd(string fileName)
         {
-    
+            using (StreamWriter sw = File.CreateText(fileName))
+            {
+                Random random = new Random();
+                for (int i = 0; i < 1000; i++)
+                {
+                    int n;
+                    do
+                    {
+                        n = random.Next(0, 10001);
+
+                    } while (n % 2 == 0);
+
+                    sw.WriteLine(n);
+                }
+            }
+
         }
 
         /// <summary>
