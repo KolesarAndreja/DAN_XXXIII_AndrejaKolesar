@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace DAN_XXXIII_Andreja_Kolesar
 {
     class Program
     {
+        //function  calls four functionalities, every functionality is for different thread
         public static void Function()
         {
             var current = Thread.CurrentThread.Name;
@@ -161,16 +163,21 @@ namespace DAN_XXXIII_Andreja_Kolesar
                 Console.WriteLine("{0} has been created", name);
                 listOfThreads.Add(t);
             }
-     
+
+
+            //Stopwatch calculates duration of first two threads
+            Stopwatch timer = new Stopwatch();
 
             //start threads from the list with index 0 and 1
             listOfThreads[0].Start();
             listOfThreads[1].Start();
-
+            timer.Start();
 
             //finish with threads from the list with index 0 and 1
             listOfThreads[0].Join();
             listOfThreads[1].Join();
+            timer.Stop();
+            Console.WriteLine("Total time for first two threads {0} milliseconds", timer.ElapsedMilliseconds);
 
             //starting with third and forth threads.
             listOfThreads[2].Start();
@@ -180,8 +187,6 @@ namespace DAN_XXXIII_Andreja_Kolesar
             listOfThreads[2].Join();
             listOfThreads[3].Join();
             Console.ReadKey();
-
-
         }
     }
 }
