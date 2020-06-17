@@ -102,9 +102,20 @@ namespace DAN_XXXIII_Andreja_Kolesar
 
         }
 
+        /// <summary>
+        /// Method for reading data from the file and displaying them in console
+        /// </summary>
+        /// <param name="fileName"></param>
         static void ReadMatrix(string fileName)
         {
-
+            using (StreamReader sr = File.OpenText(fileName))
+            {
+                string s;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
         }
 
         static void GetSum(string fileName)
