@@ -118,9 +118,25 @@ namespace DAN_XXXIII_Andreja_Kolesar
             }
         }
 
+
+        /// <summary>
+        /// Method reads numbers from file with given fileName and calculate sum of all this numbers. 
+        /// </summary>
+        /// <param name="fileName">Name of our file</param>
         static void GetSum(string fileName)
         {
-           
+            //Thread.Sleep(1500);
+            int sum = 0;
+            using (StreamReader sr = File.OpenText(fileName))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    int.TryParse(s, out int n);
+                    sum += n;
+                }
+            }
+            Console.WriteLine("Sum of all numbers from file {0} is {1}", fileName, sum);
         }
 
         static void Main(string[] args)
