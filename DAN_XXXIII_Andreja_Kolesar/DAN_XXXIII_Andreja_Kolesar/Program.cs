@@ -54,9 +54,33 @@ namespace DAN_XXXIII_Andreja_Kolesar
         {
     
         }
+
+        /// <summary>
+        /// This method prints identity matrix 100x100 into new file with given fileName
+        /// </summary>
+        /// <param name="fileName">name of the file</param>
         public static void LogMatrix(string fileName)
         {
-   
+            using (StreamWriter sw = File.CreateText(fileName))
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    StringBuilder line = new StringBuilder();
+                    for (int j = 0; j < 100; j++)
+                    {
+                        if (i == j)
+                        {
+                            line.Append(1);
+                        }
+                        else
+                        {
+                            line.Append(0);
+                        }
+                    }
+                    sw.WriteLine(line);
+                }
+            }
+
         }
 
         static void ReadMatrix(string fileName)
